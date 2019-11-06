@@ -3,7 +3,6 @@ import { name as appName } from './app.json';
 import firebase from "@firebase/app";
 
 import Routes from "./src";
-// import Loader from "./src/screens/Loader";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBjelzl9vaGFa_5fqN9ZueuuYOq2fk20U8",

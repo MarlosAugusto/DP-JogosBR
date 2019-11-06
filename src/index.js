@@ -1,7 +1,6 @@
 /* eslint-disable comma-dangle */
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack';
-// import Loader from "./screens/Loader";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";

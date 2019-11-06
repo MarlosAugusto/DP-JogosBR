@@ -1,15 +1,13 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
-import { Container } from '../components/Container';
-import { Header } from '../components/Header';
-import { ResultContainer } from '../components/ResultContainer';
+import { ActivityIndicator } from "react-native";
 
-export default function Loader({ navigation }) {
+
+import CenteredContainer from '../components/CenteredContainer';
+
+export default function Loader() {
   return (
-    <Container>
-      <StatusBar backgroundColor="#959113" />
-      <Header title="Loader" />
-      {/* <ResultContainer /> */}
-    </Container>
+    <CenteredContainer>
+      <ActivityIndicator size="large" />
+    </CenteredContainer>
   );
 }
