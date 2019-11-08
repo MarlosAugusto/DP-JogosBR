@@ -5,12 +5,10 @@ import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 import Result from "./screens/Result";
-import Loader from "./screens/Loader";
 
 const Routes = createAppContainer(
   createStackNavigator(
     {
-      Loader,
       Login,
       Register,
       Result,
