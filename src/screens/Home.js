@@ -30,14 +30,11 @@ export default function Home({ navigation }) {
       </DescContainer>
       <ScrollView>
         {
-          // console.log(matchs, JSON.parse(matchs))
           JSON.parse(matchs).map((match, index) => 
-            // {console.log('matchs',match)}
             <MatchContainer key={index} match={match} navigation={navigation} />
           )
         }
       </ScrollView>
-      {/* <MatchContainer /> */}
     </Container>
   );
 }

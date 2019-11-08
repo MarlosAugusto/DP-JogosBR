@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-// import { SignOut } from '../services/FB';
+import { SignOut } from '../services/FB';
 
 const HD = styled.View`
   width: 100%;
@@ -39,11 +39,13 @@ const Logout = styled.Text`
   font-size: 18px;
 `;
 
-export const Header = ({title, navigation}) => {  
-  // function Logout() {
-  //   SignOut();
-  //   navigation.navigate('Login');
-  // }
+export const Header = ({title, navigation}) => {
+  console.log('title', title)  
+  function logout() {
+    SignOut();
+    navigation.navigate('Login');
+    return false
+  }
 
   return (
     <HD>
@@ -58,8 +60,7 @@ export const Header = ({title, navigation}) => {
         {title}
       </TitleContainer>
       {title === 'Home' && (
-        <LogoutContainer onPress={() => console.log('sair')}>
-        {/* <LogoutContainer onPress={() => Logout()}> */}
+        <LogoutContainer onPress={() => logout()}>
           <Logout>Sair</Logout>
         </LogoutContainer>
       )}

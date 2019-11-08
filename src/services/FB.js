@@ -16,15 +16,18 @@ export const SignIn = async (email, password) => {
     return error;
   }
 
-  !!success && AsyncStorage.setItem("userEmail", email.toLowerCase());
-
   return success;
 };
 
 export const SignOut = async () => {
-  await firebase.auth().signOut();
+  let success = false;
+  await firebase.auth().signOut()
+  .then(() => {
+    success = true;
+  });
+
+return success;
   
-  AsyncStorage.setItem("userEmail", null);
 };
 
 export const SignUp = async (email, password, name) => {
