@@ -56,34 +56,38 @@ export default function Register({ navigation }) {
   }
 
   return (
-    <Container centered>
-      <ViewInput>
-        <Input
-          placeholder='Email'
-          value={email}
-          onChangeText={texto => setEmail(texto)}>
-        </Input>
-        <Input
-          placeholder='Password'
-          value={password}
-          onChangeText={senha => setPassword(senha)}
-          secureTextEntry={true} >
-        </Input>
-      </ViewInput>
-      <ViewButtons>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Button>
-            <BtnText>Voltar</BtnText>
-          </Button>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => cadastro()
-          ? navigation.navigate("Home")
-          : navigation.navigate("Login")}>
-          <Button>
-            <BtnText>Cadastrar</BtnText>
-          </Button>
-        </TouchableOpacity>
-      </ViewButtons>
-    </Container>
+    <ImageBackground style={{ flex: 1 }}
+      source={require('../assets/images/logo.jpg')}>
+      <Container centered bg>
+        <ViewInput>
+          <Input
+            placeholder='Email'
+            value={email}
+            onChangeText={texto => setEmail(texto)}>
+          </Input>
+          <Input
+            placeholder='Password'
+            value={password}
+            onChangeText={senha => setPassword(senha)}
+            secureTextEntry={true} >
+          </Input>
+        </ViewInput>
+        <ViewButtons>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Button>
+              <BtnText>Voltar</BtnText>
+            </Button>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => cadastro() === true
+            && navigation.navigate("Home")
+            // : navigation.navigate("Login")
+          }>
+            <Button>
+              <BtnText>Cadastrar-se</BtnText>
+            </Button>
+          </TouchableOpacity>
+        </ViewButtons>
+      </Container>
+    </ImageBackground>
   );
 }

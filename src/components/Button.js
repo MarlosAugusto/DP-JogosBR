@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const BtnText = styled.Text`
   color: #FFF;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
   text-align: center;
 `;

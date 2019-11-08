@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import {
-  View,
-  Text,
   TouchableOpacity,
-  StyleSheet,
   ImageBackground,
   Alert,
-  ScrollView,
-  Keyboard,
 } from 'react-native';
 import { BtnText, Button, ViewButtons } from '../components/Button';
 import { Input, ViewInput } from '../components/Input';
 import { Container } from '../components/Container';
 
-// import { Hoshi } from 'react-native-textinput-effects';
 import { SignIn } from '../services/FB';
 
 // import styled from 'styled-components/native';
@@ -62,35 +56,38 @@ export default function Login({ navigation }) {
     }
   }
   return (
-    <Container centered>
-      <ViewInput>
-        <Input
-          placeholder='Email'
-          value={email}
-          onChangeText={texto => setEmail(texto)}>
-        </Input>
-        <Input
-          placeholder='Password'
-          value={password}
-          onChangeText={senha => setPassword(senha)}
-          secureTextEntry={true} >
-        </Input>
-      </ViewInput>
-      <ViewButtons>
-        <TouchableOpacity onPress={async () => {
-          (await login()) === true &&
-            navigation.navigate('Home');
-        }}>
-          <Button>
-            <BtnText>Login</BtnText>
-          </Button>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-          <Button>
-            <BtnText>Cadastro</BtnText>
-          </Button>
-        </TouchableOpacity>
-      </ViewButtons>
-    </Container>
+    <ImageBackground style={{ flex: 1 }}
+      source={require('../assets/images/logo.jpg')}>
+      <Container centered bg>
+        <ViewInput>
+          <Input
+            placeholder='Email'
+            value={email}
+            onChangeText={texto => setEmail(texto)}>
+          </Input>
+          <Input
+            placeholder='Password'
+            value={password}
+            onChangeText={senha => setPassword(senha)}
+            secureTextEntry={true} >
+          </Input>
+        </ViewInput>
+        <ViewButtons>
+          <TouchableOpacity onPress={async () => {
+            (await login()) === true &&
+              navigation.navigate('Home');
+          }}>
+            <Button>
+              <BtnText>Login</BtnText>
+            </Button>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Button>
+              <BtnText>Cadastro</BtnText>
+            </Button>
+          </TouchableOpacity>
+        </ViewButtons>
+      </Container>
+    </ImageBackground>
   )
 }
