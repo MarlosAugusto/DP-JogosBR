@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.View`
   background-color: #DFDFD9;
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  justify-content: ${props => props.centered ? 'center' : 'flex-start'};
+  align-items: center;
 `;

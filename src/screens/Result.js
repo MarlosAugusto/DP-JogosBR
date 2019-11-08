@@ -9,10 +9,12 @@ export default function Result({ navigation }) {
   const team2 = navigation.getParam("team2");
 
   return (
-    <Container>
+    <>
       <StatusBar backgroundColor="#959113" />
       <Header title="Resultado" navigation={navigation} />
-      <ResultContainer team1={team1} team2={team2} />
-    </Container>
+      <Container>
+        <ResultContainer team1={team1} team2={team2} />
+      </Container>
+    </>
   );
 }

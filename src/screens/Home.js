@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components/native';
 import { StatusBar, ScrollView } from 'react-native';
 import { Container } from '../components/Container';
@@ -21,20 +21,25 @@ const Desc = styled.Text`
   /* margin-top: 5px; */
 `;
 export default function Home({ navigation }) {
+  useEffect(() => {
+    console.log('Home render')
+  }, []);
   return (
-    <Container>
+    <>
       <StatusBar backgroundColor="#959113" />
       <Header title="Home" navigation={navigation} />
-      <DescContainer>
-        <Desc>Jogos da Seleção Brasileira na Copa America 2019</Desc>
-      </DescContainer>
-      <ScrollView>
-        {
-          JSON.parse(matchs).map((match, index) => 
-            <MatchContainer key={index} match={match} navigation={navigation} />
-          )
-        }
-      </ScrollView>
-    </Container>
+      <Container centered>
+        <DescContainer>
+          <Desc>Jogos da Seleção Brasileira na Copa America 2019</Desc>
+        </DescContainer>
+        <ScrollView>
+          {
+            JSON.parse(matchs).map((match, index) =>
+              <MatchContainer key={index} match={match} navigation={navigation} />
+            )
+          }
+        </ScrollView>
+      </Container>
+    </>
   );
 }

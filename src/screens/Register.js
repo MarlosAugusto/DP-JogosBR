@@ -11,8 +11,9 @@ import {
   TouchableOpacity,
   Keyboard
 } from "react-native";
-import { Hoshi } from "react-native-textinput-effects";
-import Button from "../components/Button";
+import { BtnText, Button, ViewButtons } from '../components/Button';
+import { Input, ViewInput } from '../components/Input';
+import { Container } from '../components/Container';
 import { SignUp, SignIn } from "../services/FB";
 
 import styled from "styled-components/native";
@@ -28,18 +29,17 @@ const Form = styled.View`
 `;
 
 export default function Register({ navigation }) {
-  const [name, changeName] = useState("");
-  const [email, changeEmail] = useState("");
-  const [password, changePassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   async function cadastro() {
-    if (!email || !password || !name) {
+    if (!email || !password) {
       await Alert.alert(
         "Erro",
         "Insera todos os campos para realizar o Cadastro."
       );
     } else {
-      const res = SignUp(email, password, name);
+      const res = SignUp(email, password);
 
       const resLogin = res && SignIn(email, password);
       await Alert.alert(
@@ -56,77 +56,34 @@ export default function Register({ navigation }) {
   }
 
   return (
-    <ImageBackground
-      style={{ flex: 1 }}
-      source={require("../assets/images/logo.jpg")}
-    >
-      <View style={{ flex: 2, justifyContent: "center", alignItems: "center" }}>
-        <Text style={styles.title}>AgroRetorno</Text>
-        <Text style={styles.subtitle}>Cadastro</Text>
-      </View>
-      <View style={{ flex: 5, margin: 10 }}>
-        <ScrollView onScrollBeginDrag={() => Keyboard.dismiss()}>
-          <Form>
-            <Hoshi
-              label={"E-mail"}
-              labelStyle={{ color: "#FFF" }}
-              borderColor={"#FFF"}
-              borderHeight={3}
-              inputPadding={16}
-              inputStyle={{ color: "#FFF" }}
-              value={email}
-              onChangeText={texto => changeEmail(texto)}
-            />
-            <Hoshi
-              secureTextEntry
-              label={"Senha"}
-              labelStyle={{ color: "#FFF" }}
-              borderColor={"#FFF"}
-              borderHeight={3}
-              inputPadding={16}
-              inputStyle={{ color: "#FFF" }}
-              value={password}
-              onChangeText={senha => changePassword(senha)}
-            />
-            <Hoshi
-              label={"Nome"}
-              labelStyle={{ color: "#FFF" }}
-              borderColor={"#FFF"}
-              borderHeight={3}
-              inputPadding={16}
-              inputStyle={{ color: "#FFF" }}
-              value={name}
-              onChangeText={nome => changeName(nome)}
-            />
-            <TouchableOpacity
-              style={{
-                marginTop: 30,
-                marginBottom: 10,
-                alignItems: "center"
-              }}
-              onPress={() =>
-                cadastro()
-                  ? navigation.navigate("Home")
-                  : navigation.navigate("Login")
-              }
-              disabled={!email || !password || !name}
-            >
-              <Button title="Cadastrar" color="#006B42" />
-            </TouchableOpacity>
-          </Form>
-        </ScrollView>
-      </View>
-    </ImageBackground>
+    <Container centered>
+      <ViewInput>
+        <Input
+          placeholder='Email'
+          value={email}
+          onChangeText={texto => setEmail(texto)}>
+        </Input>
+        <Input
+          placeholder='Password'
+          value={password}
+          onChangeText={senha => setPassword(senha)}
+          secureTextEntry={true} >
+        </Input>
+      </ViewInput>
+      <ViewButtons>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Button>
+            <BtnText>Voltar</BtnText>
+          </Button>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => cadastro()
+          ? navigation.navigate("Home")
+          : navigation.navigate("Login")}>
+          <Button>
+            <BtnText>Cadastrar</BtnText>
+          </Button>
+        </TouchableOpacity>
+      </ViewButtons>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 50,
-    color: '#000000CC',
-  },
-  subtitle: {
-    fontSize: 40,
-    color: '#000000CC',
-  }
-});

@@ -30,7 +30,7 @@ return success;
   
 };
 
-export const SignUp = async (email, password, name) => {
+export const SignUp = async (email, password) => {
   let success = false;
   await firebase
     .auth()

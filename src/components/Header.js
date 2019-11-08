@@ -31,6 +31,7 @@ const LogoutContainer = styled.TouchableOpacity`
   margin-left: auto;
   margin-right: 20px;
   width: 20%;
+  top: 0;
   z-index: 1;
 `;
 const Logout = styled.Text`
@@ -40,7 +41,6 @@ const Logout = styled.Text`
 `;
 
 export const Header = ({title, navigation}) => {
-  console.log('title', title)  
   function logout() {
     SignOut();
     navigation.navigate('Login');
